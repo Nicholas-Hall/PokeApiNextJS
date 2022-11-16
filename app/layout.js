@@ -3,7 +3,6 @@ export default function RootLayout({ children }) {
     <html>
       <head />
       <body>
-        <div>1</div>
         {children}
       </body>
     </html>

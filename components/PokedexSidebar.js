@@ -5,7 +5,7 @@ import {getPokemonId} from "@/utils";
 
 export default function PokedexSideBar({pokemonList}) {
     const [searchText, setSearchText] = useState("");
-    const filteredPokemonList = pokemonList.filter(pokemon => pokemon.name.includes(searchText));
+    const filteredPokemonList = pokemonList.filter(pokemon => pokemon.name.toLowerCase().includes(searchText.toLocaleLowerCase()));
 
     return (
         <>
