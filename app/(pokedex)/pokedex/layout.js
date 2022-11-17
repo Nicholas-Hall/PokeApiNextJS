@@ -18,3 +18,5 @@ export default async function PokedexLayout({ children }) {
         </>
     )
 }
+
+export const dynamicParams = false;

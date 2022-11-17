@@ -8,7 +8,7 @@ async function getOnePokemon(id) {
     // You can return Date, Map, Set, etc.
   
     if (!res.ok) {
-      return undefined;
+      notFound();
     }
 
     return res.json();
@@ -25,10 +25,6 @@ export async function generateStaticParams() {
 
 export default async function Page({ params }) {
     const pokemon = await getOnePokemon(params.id);
-
-    if (!pokemon) {
-      notFound();
-    }
 
     return (
       <PokemonOverview pokemon={pokemon} />
