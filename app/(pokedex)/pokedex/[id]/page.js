@@ -7,11 +7,10 @@ async function getOnePokemon(id) {
     // The return value is *not* serialized
     // You can return Date, Map, Set, etc.
   
-    // Recommendation: handle errors
     if (!res.ok) {
-      notFound();
+      return undefined;
     }
-  
+
     return res.json();
 }
 
@@ -26,6 +25,10 @@ export async function generateStaticParams() {
 
 export default async function Page({ params }) {
     const pokemon = await getOnePokemon(params.id);
+
+    if (!pokemon) {
+      notFound();
+    }
 
     return (
       <PokemonOverview pokemon={pokemon} />
