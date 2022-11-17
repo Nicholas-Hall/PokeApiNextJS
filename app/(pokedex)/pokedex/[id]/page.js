@@ -4,8 +4,6 @@ import { notFound } from "next/navigation"
 
 async function getOnePokemon(id) {
     const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
-    // The return value is *not* serialized
-    // You can return Date, Map, Set, etc.
   
     if (!res.ok) {
       notFound();
