@@ -17,10 +17,13 @@ async function getOnePokemon(id) {
 
 export async function generateStaticParams() {
     const allPokemon = await getAllPokemon();
-  
-    return allPokemon.results.map((pokemon) => ({
-      id: getPokemonId(pokemon)
-    }));
+
+    const staticParams = []
+    allPokemon.results.map((pokemon) => {{
+      staticParams.push({id: getPokemonId(pokemon)}, {id: pokemon.name});
+    }});
+
+    return staticParams;
 }
 
 export default async function Page({ params }) {
