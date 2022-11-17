@@ -2,6 +2,7 @@
 import {useState} from 'react';
 import Link from 'next/link';
 import {getPokemonId} from "@/utils";
+import { Input } from '@chakra-ui/react';
 
 export default function PokedexSideBar({pokemonList}) {
     const [searchText, setSearchText] = useState("");
@@ -10,7 +11,7 @@ export default function PokedexSideBar({pokemonList}) {
     return (
         <>
             <div>
-                <input onChange={e => setSearchText(e.target.value)} />
+                <Input placeholder="Search" onChange={e => setSearchText(e.target.value)} />
             </div>
             <div>
                 {filteredPokemonList.map(pokemon => (

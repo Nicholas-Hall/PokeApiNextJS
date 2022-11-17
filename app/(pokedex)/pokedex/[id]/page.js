@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import {getAllPokemon, getPokemonId} from "@/utils";
+import PokemonOverview from '@/components/PokemonOverview';
 
 async function getOnePokemon(id) {
     const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
@@ -28,9 +29,6 @@ export default async function Page({ params }) {
     const pokemon = await getOnePokemon(params.id);
 
     return (
-        <>
-            <h1>{pokemon.name}</h1>
-            <Image alt={`front defualt image of ${pokemon.name}`} src={pokemon.sprites.front_default} width={100} height={100} />
-        </>
+        <PokemonOverview pokemon={pokemon} />
     );
 }
