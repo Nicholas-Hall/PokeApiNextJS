@@ -2,7 +2,7 @@
 import { useRef,useState} from 'react';
 import Link from 'next/link';
 import {getPokemonId} from "@/utils";
-import { Box, Input, useDimensions,VStack } from '@chakra-ui/react';
+import { Box, Input, Text, useDimensions,VStack } from '@chakra-ui/react';
 
 export default function PokedexSideBar({pokemonList}) {
     const elementRef = useRef()
@@ -18,7 +18,11 @@ export default function PokedexSideBar({pokemonList}) {
             <Box height={`calc(100vh - ${dimensions?.marginBox.height}px - 8px)`} overflowY="scroll">
                 {filteredPokemonList.map(pokemon => (
                     <Box key={pokemon}>
-                        <Link href={`/pokedex/${getPokemonId(pokemon)}`}>{pokemon.name}</Link>
+                        <Link href={`/pokedex/${getPokemonId(pokemon)}`}>
+                            <Text textTransform="capitalize">
+                                {pokemon.name}
+                            </Text>
+                        </Link>
                     </Box>
                 ))}
             </Box>
