@@ -15,7 +15,7 @@ export default function PokedexSideBar({pokemonList}) {
             <Box ref={elementRef}>
                 <Input placeholder="Search" onChange={e => setSearchText(e.target.value)} />
             </Box>
-            <Box height={`calc(100vh - ${dimensions?.marginBox.height}px - 8px)`}>
+            <Box height={`calc(100vh - ${dimensions?.marginBox.height}px - 8px)`} overflowY="scroll">
                 {filteredPokemonList.map(pokemon => (
                     <Box key={pokemon}>
                         <Link href={`/pokedex/${getPokemonId(pokemon)}`}>{pokemon.name}</Link>
