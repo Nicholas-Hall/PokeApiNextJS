@@ -1,25 +1,27 @@
 "use client"
-import {useState} from 'react';
+import { useRef,useState} from 'react';
 import Link from 'next/link';
 import {getPokemonId} from "@/utils";
-import { Input } from '@chakra-ui/react';
+import { Box, Input, useDimensions,VStack } from '@chakra-ui/react';
 
 export default function PokedexSideBar({pokemonList}) {
+    const elementRef = useRef()
+    const dimensions = useDimensions(elementRef)
     const [searchText, setSearchText] = useState("");
     const filteredPokemonList = pokemonList.filter(pokemon => pokemon.name.toLowerCase().includes(searchText.toLocaleLowerCase()));
 
     return (
-        <>
-            <div>
+        <VStack>
+            <Box ref={elementRef}>
                 <Input placeholder="Search" onChange={e => setSearchText(e.target.value)} />
-            </div>
-            <div>
+            </Box>
+            <Box height={`calc(100vh - ${dimensions?.marginBox.height}px - 8px)`}>
                 {filteredPokemonList.map(pokemon => (
-                    <div key={pokemon}>
+                    <Box key={pokemon}>
                         <Link href={`/pokedex/${getPokemonId(pokemon)}`}>{pokemon.name}</Link>
-                    </div>
+                    </Box>
                 ))}
-            </div>
-        </>
+            </Box>
+        </VStack>
     )
 }
